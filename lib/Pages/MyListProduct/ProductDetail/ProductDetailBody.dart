@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:easymktf/Class/List.dart';
+import 'package:easymktf/Class/Product.dart';
+import 'package:easymktf/Class/ShoppingList.dart';
 
 class ProductDetailBody extends StatelessWidget {
-  final List productList;
+  final Product product;
 
-  ProductDetailBody(this.productList);
+  ProductDetailBody(this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -14,11 +15,11 @@ class ProductDetailBody extends StatelessWidget {
             color: Colors.black54,
             child: new Center(
               child: new Hero(
-                tag: 'product-icon-${productList[1].id}',
+                tag: 'product-icon-${product.name}',
                 child: new Image(
-                  image: new AssetImage(productList[1].img),
-                  height: 120.0,
-                  width: 120.0,
+                  image: new AssetImage(product.img),
+                  height: 300.0,
+                  width: 300.0,
                 ),
               ),
             ),

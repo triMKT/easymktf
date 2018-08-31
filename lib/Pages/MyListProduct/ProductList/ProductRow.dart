@@ -37,7 +37,7 @@ class ProductRow extends StatelessWidget{
   _navigateTo(context, String id) {
     var route = new MaterialPageRoute(
       builder: (BuildContext context) =>
-      new ProductDetailPage(id: product.id),
+      new ProductDetailPage(product.id),
     );
     Navigator.of(context).push(route);
   }

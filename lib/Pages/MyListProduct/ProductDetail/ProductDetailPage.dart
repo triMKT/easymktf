@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:easymktf/Class/Product.dart';
+import 'package:easymktf/Class/ShoppingList.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailAppBar.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailBody.dart';
 
-class ProductDetailPage extends StatefulWidget {
-  final String id;
+class ProductDetailPage extends StatelessWidget {
+  final Product product;
 
-  ProductDetailPage({Key key, this.id}) : super(key: key);
+  ProductDetailPage(String id): product = ProductDao.getProductById(id);
 
-  @override
-  _ProductDetailPageState createState() => new _ProductDetailPageState();
-}
-
-class _ProductDetailPageState extends State<ProductDetailPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +16,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       body: new Stack(
         children: <Widget>[
           new DetailAppBar(),
-          new ProductDetailBody()
+          new ProductDetailBody(product),
         ],
       ),
     );
