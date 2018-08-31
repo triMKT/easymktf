@@ -13,11 +13,9 @@
 //  }
 //}
 
-
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'home_widget.dart';
-import 'home_page.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductList/ProductListPage.dart';
 
 void main() => runApp(MyApp());
@@ -26,8 +24,7 @@ class MyApp extends StatelessWidget {
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context) => LoginPage(),
     Home.tag: (context) => Home(),
-    ProductListPage.tag: (context) => ProductListPage(),
-//    HomePage.tag: (context) => HomePage(),
+    ProductListPage.tag: (context) => ProductListPage(''),
   };
 
   @override

@@ -4,7 +4,7 @@ import 'package:easymktf/Class/ShoppingList.dart';
 
 class ListRow extends StatelessWidget{
 
-  final ProductDao list;
+  final ShoppingList list;
 
   ListRow(this.list);
 
@@ -37,7 +37,7 @@ class ListRow extends StatelessWidget{
   _navigateTo(context, String id) {
     var route = new MaterialPageRoute(
       builder: (BuildContext context) =>
-      new ProductListPage(),
+      new ProductListPage(list.id),
     );
     Navigator.of(context).push(route);
   }

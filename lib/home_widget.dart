@@ -23,17 +23,12 @@ class _HomeState extends State<Home> {
   Widget homePages(int currentIndex){
     switch (currentIndex){
       case 0:
-        this._title_page = 'Recomendado';
         return Recommended();
       case 1:
-        this._title_page = 'Em Alta';
-
         return Trending();
       case 2:
-        this._title_page = 'Pesquisar';
         return Search();
       case 3:
-        this._title_page = 'Minhas Listas';
         return MyLists();
         break;
         default:return Recommended();
@@ -161,6 +156,22 @@ class _HomeState extends State<Home> {
     setState(() {
       _pageIndex = page;
     });
+    switch (page){
+      case 0:
+        this._title_page = 'Recomendado';
+        break;
+      case 1:
+        this._title_page = 'Em Alta';
+        break;
+      case 2:
+        this._title_page = 'Pesquisar';
+        break;
+      case 3:
+        this._title_page = 'Minhas Listas';
+        break;
+      default:this._title_page = 'Minhas Listas';
+    }
+
 //    _pageController.animateToPage(
 //      page,
 //      duration: Duration(milliseconds: 100),
