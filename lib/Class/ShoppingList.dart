@@ -5,10 +5,9 @@ class ProductDao {
   final String name;
   final String totalPrice;
   final String img;
-  final List<Product> products;
+  static final List<Product> products;
 
-  const ProductDao(this.products, {this.id, this.name, this.totalPrice,this.img});
-
+  const ProductDao({this.id, this.name, this.totalPrice,this.img});
 
 
   static Product getProductById(id) {
