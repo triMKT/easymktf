@@ -19,7 +19,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
       body: new Stack(
         children: <Widget>[
           new DetailAppBar(),
-          new ProductDetailBody('aooo')
+          new ProductDetailBody()
         ],
       ),
     );
