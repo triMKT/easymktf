@@ -7,8 +7,6 @@ class MyLists extends StatefulWidget{
 
 
 class MyListsState extends State<MyLists> {
-
-
   @override
   Widget build(BuildContext context) {
     return new  Scaffold(

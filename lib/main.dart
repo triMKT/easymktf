@@ -13,18 +13,25 @@
 //  }
 //}
 
+
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import 'home_widget.dart';
+import 'home_page.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductList/ProductListPage.dart';
+import 'package:easymktf/Pages/navigation.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  MyApp() {
+    Navigation.initPaths();
+  }
   final routes = <String, WidgetBuilder>{
     LoginPage.tag: (context) => LoginPage(),
     Home.tag: (context) => Home(),
-    ProductListPage.tag: (context) => ProductListPage(''),
+    ProductListPage.tag: (context) => ProductListPage(),
+    HomePage.tag: (context) => HomePage(),
   };
 
   @override
@@ -38,8 +45,8 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blueGrey, backgroundColor: Colors.white,
         fontFamily: 'Nunito',
       ),
-      home: LoginPage(),
-      routes: routes,
+      //home: LoginPage(),
+      onGenerateRoute: Navigation.router.generator,
     );
   }
 }

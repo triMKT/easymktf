@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductList/ProductRow.dart';
 import 'package:easymktf/Class/ShoppingList.dart';
+import 'package:easymktf/Class/User.dart';
 
 class ProductList extends StatelessWidget {
 
@@ -8,16 +9,14 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
         child : ListView.builder(
-          itemCount: ShoppingList.products.length,
+          itemCount: ProductDao.products.length,
 //      padding: new EdgeInsets.only(top: 5.0),
-          itemBuilder: (_, index) => new ProductRow(ShoppingList.products[index]),
+          itemBuilder: (_, index) => new ProductRow(ProductDao.products[1]),
 //        itemBuilder: (context, index){
 //          return _items[index];
         )
     );
   }
-
-
 //  @override
 //  void initState() {
 //    loadItems();

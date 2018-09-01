@@ -5,5 +5,4 @@ class Product {
   final String img;
 
   const Product({this.id, this.name, this.price, this.img});
-
 }
