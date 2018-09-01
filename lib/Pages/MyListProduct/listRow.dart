@@ -4,7 +4,7 @@ import 'package:easymktf/Class/ShoppingList.dart';
 
 class ListRow extends StatelessWidget{
 
-  final ProductDao list;
+  final ShoppingList list;
 
   ListRow(this.list);
 
@@ -13,18 +13,17 @@ class ListRow extends StatelessWidget{
     return new Card(
       child: new Container(
 //          margin: const EdgeInsets.only(left: 0.0, right: 0.0),
-        height: 72.0,
+        height: 100.0,
+
         child: new FlatButton(
           onPressed: () => _navigateTo(context, list.id),
+
           child: new Row(
             children: <Widget>[
-              new Image(
-                image: new AssetImage(list.img),
-                height: 72.0,
-                width: 72.0,
-              ),
+              _getlistImage(list.img),
               new Padding(padding: EdgeInsets.only(right: 10.0)),
-              _getColumText(list.name, list.totalPrice)
+                  _getColumText(list.name, list.totalPrice),
+                  _getPriceWidget(list.totalPrice),
 //            planetThumbnail,
             ],
           ),
@@ -36,8 +35,7 @@ class ListRow extends StatelessWidget{
 
   _navigateTo(context, String id) {
     var route = new MaterialPageRoute(
-      builder: (BuildContext context) =>
-      new ProductListPage(),
+      builder: (BuildContext context) => new ProductListPage(),
     );
     Navigator.of(context).push(route);
   }
@@ -64,7 +62,8 @@ class ListRow extends StatelessWidget{
             crossAxisAlignment:CrossAxisAlignment.start,
             children: <Widget>[
               _getNameWidget(list.name),
-              _getPriceWidget(list.totalPrice),
+              new Padding(padding: EdgeInsets.only(left: 30.0,right: 30.0)),
+              _getProductsWidget(),
             ],
           ),
         )
@@ -75,12 +74,39 @@ class ListRow extends StatelessWidget{
     return new Text(
       curencyName,
       maxLines: 1,
-      style: new TextStyle(fontWeight: FontWeight.bold),
+      style: new TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 20.0,
+      ),
+    );
+  }
+
+  Widget _getlistImage(String img) {
+    return new Container(
+      width: 100.0,
+      height: 100.0,
+      decoration: new BoxDecoration(
+        shape: BoxShape.circle,
+        image: new DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage(img),
+        ),
+      ),
     );
   }
 
   Widget _getPriceWidget(String price){
     return new Text(price,
-      style: new TextStyle(color: Colors.grey,fontSize: 10.0),);
+      style: new TextStyle(
+          color: Colors.grey,
+          fontSize: 20.0),
+    );
+  }
+  Widget _getProductsWidget(){
+    return new Text("Produtos : 10",
+      style: new TextStyle(
+          color: Colors.grey,
+          fontSize: 20.0),
+    );
   }
 }

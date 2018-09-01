@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:easymktf/Class/Product.dart';
 import 'package:easymktf/Class/ShoppingList.dart';
-import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailAppBar.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailBody.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Product product;
 
-  ProductDetailPage(String id): product = ProductDao.getProductById(id);
+  ProductDetailPage(String id): product = ShoppingList.getProductById(id);
 
 
   @override
@@ -15,60 +14,26 @@ class ProductDetailPage extends StatelessWidget {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
-          new DetailAppBar(),
           new ProductDetailBody(product),
+          _getImage()
         ],
       ),
     );
   }
 
-//  Widget _buildProfileHeader(User user) {
-//    return new Container(
-//      margin: new EdgeInsets.only(top: 16.0),
-//      child: new Column(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        mainAxisSize: MainAxisSize.min,
-//        crossAxisAlignment: CrossAxisAlignment.center,
-//        children: <Widget>[
-//          _buildUserIdentity(user),
-//          new Padding(
-//            child: _buildUserInfo(user),
-//            padding: new EdgeInsets.only(top: 24.0, bottom: 8.0),
-//          ),
-//          new Divider()
-//        ],
-//      ),
-//    );
-//  }
-//
-//  Widget _buildUserIdentity(User user) {
-//    return new Row(
-//        mainAxisAlignment: MainAxisAlignment.center,
-//        mainAxisSize: MainAxisSize.max,
-//        crossAxisAlignment: CrossAxisAlignment.center,
-//        children: <Widget>[
-//          new Padding(
-//            child: new CircleAvatar(
-//              radius: 40.0,
-//              backgroundColor: Colors.grey,
-//              backgroundImage: user.avatarUrl != null ? new NetworkImage(
-//                  user.avatarUrl) : null,
-//            ),
-//            padding: const EdgeInsets.only(right: 16.0),
-//          ),
-//          new Column(
-//            children: <Widget>[
-//              new Padding(
-//                padding: const EdgeInsets.only(bottom: 4.0),
-//                child: new Text(
-//                    user.name != null ? user.name : '',
-//                    style: new TextStyle(fontWeight: FontWeight.bold)
-//                ),
-//              ),
-//              new Text(user.login != null ? user.login : '')
-//            ],
-//          )
-//        ]
-//    );
-//  }
+  Widget _getImage(){
+    return new Container(
+        child: Hero(
+          tag: "product-hero-${product.id}",
+          child: Padding(
+            padding: EdgeInsets.all(16.0),
+            child: CircleAvatar(
+              radius: 72.0,
+              backgroundColor: Colors.transparent,
+              backgroundImage: AssetImage(product.img),
+            ),
+          ),
+        ),
+    );
+  }
 }

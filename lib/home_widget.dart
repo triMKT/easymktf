@@ -51,6 +51,7 @@ class _HomeState extends State<Home> {
 
       body: homePages(_pageIndex),
 
+      //button
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 20.0,
         type: BottomNavigationBarType.fixed,
@@ -82,26 +83,27 @@ class _HomeState extends State<Home> {
             children: <Widget>[
               new Container(
                 height: 180.0,
-                child: new DrawerHeader(
-                  padding: new EdgeInsets.all(0.0),
+                child: new UserAccountsDrawerHeader(
+                  accountEmail: new Text("beringela@gmail.com"),
+                  accountName: new Text("beringela"),
+                  currentAccountPicture: new CircleAvatar(
+                      backgroundImage: new AssetImage("assets/berinjela.jpg"),
+                    ),
+
                   decoration: new BoxDecoration(
                     color: Colors.black54,
-                  ),
-                  child: new Center(
-                    child: new Hero(
-                    tag: 'hero',
-                      child: Padding(
-                        padding: EdgeInsets.all(16.0),
-                          child: CircleAvatar(
-                          radius: 72.0,
-                          backgroundColor: Colors.transparent,
-                          backgroundImage: AssetImage('assets/berinjela.jpg'),
-                        ),
-                      ),
-                    )
+                    gradient: new LinearGradient(
+                      colors: <Color>[
+                        new Color.fromARGB(255, 18, 68, 144),
+                        new Color.fromARGB(255, 66, 165, 245)
+                      ],
+                      stops: [0.0, 0.9],
+                      begin: const FractionalOffset(0.0, 0.0),
+                      end: const FractionalOffset(0.0, 1.0),
+                    ),
+                    ),
                   ),
                 ),
-              ),
               new ListTile(
                   leading: new Icon(Icons.favorite),
                   title: new Text('Favoritos'),
@@ -166,6 +168,21 @@ class _HomeState extends State<Home> {
 //      duration: Duration(milliseconds: 100),
 //      curve: Curves.easeIn,
 //    );
+      switch (page){
+        case 0:
+          this._title_page = 'Recomendado';
+          break;
+        case 1:
+          this._title_page = 'Em Alta';
+          break;
+        case 2:
+          this._title_page = 'Pesquisar';
+          break;
+        case 3:
+          this._title_page = 'Minhas Listas';
+          break;
+        default:this._title_page = 'Minhas Listas';
+      }
   }
 
   @override

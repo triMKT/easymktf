@@ -10,26 +10,39 @@ class User {
   final String password;
   final String address;
 
-
   const User({this.id, this.name, this.email, this.img, this.address, this.password});
 
-  static final List<ProductDao> lists = [
-    const ProductDao(
+  static final List<ShoppingList> lists = [
+    const ShoppingList(
       id: "1",
-      name: "toma no cu",
-      totalPrice: "99",
-      img: "assets/berinjela.jpg"
-    ),
-    const ProductDao(
-      id: "2",
-      name: "toma no cu",
+      name: "LISTA 1",
       totalPrice: "99",
       img: "assets/berinjela.jpg",
     ),
+    const ShoppingList(
+      id: "2",
+      name: "LISTA 2",
+      totalPrice: "99",
+      img: "assets/mandioca.jpg",
+    ),
   ];
 
+//  List<Product> productos = [
+//    const Product(
+//      id: "1",
+//      name: "Beringela",
+//      price: "99",
+//      img: "assets/berinjela.jpg",
+//    ),
+//    const Product(
+//      id: "1",
+//      name: "Beringela",
+//      price: "99",
+//      img: "assets/berinjela.jpg",
+//    ),
+//  ];
 
-  static ProductDao getListById(id) {
+  static ShoppingList getListById(id) {
     return lists.where((p)=> p.id == id).first;
 //    return products.
 //        .where((p) => p.id == id)
