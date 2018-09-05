@@ -114,7 +114,6 @@ class _LoginPageState extends State<LoginPage> {
             loginGoogle,
             SizedBox(height: 14.0),
             loginButton
-
           ],
         ),
       ),

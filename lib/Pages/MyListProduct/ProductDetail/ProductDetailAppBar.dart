@@ -13,7 +13,7 @@ class DetailAppBar extends StatelessWidget {
       child: new Row(
         children: <Widget>[
           new BackButton(
-              color: Colors.black54,
+              color: Colors.black,
           ),
         ],
       ),

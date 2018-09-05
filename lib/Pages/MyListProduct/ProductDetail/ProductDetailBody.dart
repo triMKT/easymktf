@@ -13,19 +13,98 @@ class ProductDetailBody extends StatelessWidget {
     return new Scaffold(
       body: new Container(
         constraints: new BoxConstraints.expand(),
-        color: new Color.fromARGB(255, 66, 165, 245),
-        child: new Stack (
+//        color: new Color.fromARGB(255, 66, 165, 245),
+        child: new Column (
           children: <Widget>[
-            _getBackground(),
-            _getGradient(),
+//            _getToolbar(context),
+//            _getBackground(),
+//            _getGradient(),
+            _getHero(),
+            _getName(),
+            new Divider(height: 15.0,),
+            new Text(
+                "Informações :",
+                style: new TextStyle(fontSize: 20.0, color: Colors.black),
+//                textAlign: TextAlign.center,
+
+            ),
+            new Divider(height: 15.0,),
+            _getInfos(),
+            new Divider(height: 15.0,),
 //            _getContent(),
-            _getToolbar(context),
+
           ],
         ),
       ),
     );
   }
 
+
+  Container _getHero(){
+    return new Container(
+      height: 240.0,
+      child: new Hero(
+      tag: "produto",
+      child: new Material(
+        elevation: 0.3,
+        child: new InkWell(
+          child: new Image.asset(
+            product.img,
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+    ),
+    );
+}
+Container _getInfos(){
+  return new Container(
+    width: 420.0,
+
+//    padding: new EdgeInsets.all(10.0),
+    child: new Card(
+      elevation: 0.0,
+      child: new Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: new Text(
+          "Peso : 99kg \n"
+           "Categoria : categoria\n"
+           "Marca : marca\n"
+            "Cidade : cidade\n"
+            "Data fabricação : 00/00/0000\n"
+            "Validade : 00/00/0000",
+          style: new TextStyle(fontSize: 18.0),
+          textAlign: TextAlign.justify,
+        ),
+      ),
+    ),
+  );
+
+}
+
+  Container _getName(){
+    return new Container(
+//      height: 240.0,
+      child : new Row(
+        children: <Widget>[
+          new Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+                  new Text(
+                    product.name,
+                    style: new TextStyle(fontSize: 30.0, color: Colors.blue),
+                    textAlign: TextAlign.center,
+                  ),
+                  new Text(
+                    "Mercado",
+                    style: new TextStyle(fontSize: 20.0, color: Colors.grey),
+                  ),
+                ],
+              ),
+        ],
+      )
+    );
+  }
 
 
     Container _getBackground () {
@@ -56,17 +135,15 @@ class ProductDetailBody extends StatelessWidget {
         );
       }
 
-
-
   Container _getToolbar(BuildContext context) {
-      return new Container(
-                 margin: new EdgeInsets.only(
-                  top: MediaQuery
-                         .of(context)
-                      .padding
-                      .top),
-              child: new BackButton(color: Colors.white),
-            );
-     }
+    return new Container(
+      margin: new EdgeInsets.only(
+          top: MediaQuery
+              .of(context)
+              .padding
+              .top),
+      child: new BackButton(color: Colors.white),
+    );
+  }
 
 }

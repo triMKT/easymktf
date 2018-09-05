@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:easymktf/Pages/MyListProduct/myListsWidget.dart';
-import 'package:easymktf/Pages/recommendedWidget.dart';
+import 'package:easymktf/Pages/recommended/recommendedWidget.dart';
 import 'package:easymktf/Pages/trending.dart';
-import 'package:easymktf/Pages/searchWidget.dart';
+import 'package:easymktf/Pages/Search/searchWidget.dart';
+import 'package:easymktf/drawer.dart';
+import 'package:easymktf/searchBar.dart';
 
 
 class Home extends StatefulWidget {
@@ -14,29 +16,30 @@ class Home extends StatefulWidget {
   }
 }
 
+
 class _HomeState extends State<Home> {
   int _pageIndex = 0;
   PageController _pageController;
-  var _title_page = null;
+  var _title_page = "Recomendado";
 
 
   Widget homePages(int currentIndex){
     switch (currentIndex){
       case 0:
-        this._title_page = 'Recomendado';
-        return Recommended();
+        _title_page = 'Recomendado';
+        return Recommended(icon: Icons.accessibility ,onPressed: null,tooltip:'idsjdiasjd');
       case 1:
-        this._title_page = 'Em Alta';
-
+        _title_page = 'Em Alta';
         return Trending();
       case 2:
-        this._title_page = 'Pesquisar';
+        _title_page = 'Procurar';
         return Search();
       case 3:
-        this._title_page = 'Minhas Listas';
+        _title_page = 'Minhas Listas';
         return MyLists();
         break;
-        default:return Recommended();
+        default:
+          return Recommended();
     }
   }
 
@@ -44,12 +47,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(_title_page),
-      ),
-
-
       body: homePages(_pageIndex),
+      appBar: _appBar(_pageIndex),
 
       //button
       bottomNavigationBar: BottomNavigationBar(
@@ -78,83 +77,8 @@ class _HomeState extends State<Home> {
       ),
 
       //Drawer
-      drawer: new Drawer(
-          child: new ListView(
-            children: <Widget>[
-              new Container(
-                height: 180.0,
-                child: new UserAccountsDrawerHeader(
-                  accountEmail: new Text("beringela@gmail.com"),
-                  accountName: new Text("beringela"),
-                  currentAccountPicture: new CircleAvatar(
-                      backgroundImage: new AssetImage("assets/berinjela.jpg"),
-                    ),
+      drawer:drawer(context) ,
 
-                  decoration: new BoxDecoration(
-                    color: Colors.black54,
-                    gradient: new LinearGradient(
-                      colors: <Color>[
-                        new Color.fromARGB(255, 18, 68, 144),
-                        new Color.fromARGB(255, 66, 165, 245)
-                      ],
-                      stops: [0.0, 0.9],
-                      begin: const FractionalOffset(0.0, 0.0),
-                      end: const FractionalOffset(0.0, 1.0),
-                    ),
-                    ),
-                  ),
-                ),
-              new ListTile(
-                  leading: new Icon(Icons.favorite),
-                  title: new Text('Favoritos'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(Home.tag);
-                  }
-              ),
-              new ListTile(
-                  leading: new Icon(Icons.perm_identity),
-                  title: new Text('Conta'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(Home.tag);
-                  }
-              ),
-              new ListTile(
-                  leading: new Icon(Icons.exit_to_app),
-                  title: new Text('Sign Out'),
-                  onTap: () {
-                    Navigator.pop(context);
-                  }
-              ),
-              new Divider(),
-              new ListTile(
-                  leading: new Icon(Icons.airline_seat_individual_suite),
-                  title: new Text('Preferencias'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(Home.tag);
-                  }
-              ),
-              new ListTile(
-                  leading: new Icon(Icons.help_outline),
-                  title: new Text('Ajuda'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(Home.tag);
-                  }
-              ),
-              new ListTile(
-                  leading: new Icon(Icons.share),
-                  title: new Text('Compartilhar'),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Navigator.of(context).pushNamed(Home.tag);
-                  }
-              ),
-            ],
-          )
-      )
     );
   }
 
@@ -163,11 +87,6 @@ class _HomeState extends State<Home> {
     setState(() {
       _pageIndex = page;
     });
-//    _pageController.animateToPage(
-//      page,
-//      duration: Duration(milliseconds: 100),
-//      curve: Curves.easeIn,
-//    );
       switch (page){
         case 0:
           this._title_page = 'Recomendado';
@@ -191,6 +110,31 @@ class _HomeState extends State<Home> {
 //    _pageController = new PageController();
     this._title_page = 'Home';
   }
+  Widget _appBar(_pageIndex){
+    switch (_pageIndex){
+      case 0:
+        _title_page = 'Recomendado';
+        return AppBar(
+          title: Text(_title_page),
+        );
+      case 1:
+        return AppBar(
+          title: Text(_title_page),
+        );
+      case 2:
+        return null;
+      case 3:
+        _title_page = 'Minhas Listas';
+        return AppBar(
+          title: Text(_title_page),
+        );
+        break;
+      default:
+        return Recommended();
+    }
+  }
+
+
 //
 //  @override
 //  void dispose() {

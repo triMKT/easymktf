@@ -8,11 +8,10 @@ class ProductList extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Container(
         child : ListView.builder(
+          scrollDirection: Axis.vertical,
           itemCount: ShoppingList.products.length,
 //      padding: new EdgeInsets.only(top: 5.0),
           itemBuilder: (_, index) => new ProductRow(ShoppingList.products[index]),
-//        itemBuilder: (context, index){
-//          return _items[index];
         )
     );
   }

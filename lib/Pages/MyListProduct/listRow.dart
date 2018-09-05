@@ -13,14 +13,13 @@ class ListRow extends StatelessWidget{
     return new Card(
       child: new Container(
 //          margin: const EdgeInsets.only(left: 0.0, right: 0.0),
-        height: 100.0,
-
+        height: 72.0,
         child: new FlatButton(
           onPressed: () => _navigateTo(context, list.id),
 
           child: new Row(
             children: <Widget>[
-              _getlistImage(list.img),
+//              _getlistImage(list.img),
               new Padding(padding: EdgeInsets.only(right: 10.0)),
                   _getColumText(list.name, list.totalPrice),
                   _getPriceWidget(list.totalPrice),
@@ -96,10 +95,12 @@ class ListRow extends StatelessWidget{
   }
 
   Widget _getPriceWidget(String price){
-    return new Text(price,
+    return new Text(
+      "Valor total : $price",
       style: new TextStyle(
           color: Colors.grey,
           fontSize: 20.0),
+      textAlign: TextAlign.end,
     );
   }
   Widget _getProductsWidget(){

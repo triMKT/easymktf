@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:easymktf/Class/Product.dart';
 import 'package:easymktf/Class/ShoppingList.dart';
 import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailBody.dart';
+import 'package:easymktf/Pages/MyListProduct/ProductDetail/ProductDetailAppBar.dart';
 
 class ProductDetailPage extends StatelessWidget {
   final Product product;
@@ -14,8 +15,9 @@ class ProductDetailPage extends StatelessWidget {
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
+          new DetailAppBar(),
           new ProductDetailBody(product),
-          _getImage()
+//          _getImage()
         ],
       ),
     );
