@@ -49,7 +49,6 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: homePages(_pageIndex),
       appBar: _appBar(_pageIndex),
-
       //button
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 20.0,
@@ -75,6 +74,7 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
+
 
       //Drawer
       drawer:drawer(context) ,
